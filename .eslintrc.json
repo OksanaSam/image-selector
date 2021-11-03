@@ -1,0 +1,11 @@
+{
+  "extends": "brightspace/lit-config",
+  "overrides": [{
+    "files": [
+      "**/demo/**.html"
+    ],
+    "rules": {
+      "no-console": 0
+    }
+  }]
+}
