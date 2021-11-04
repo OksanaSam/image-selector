@@ -53,8 +53,7 @@ class ScrollerCarouselItem extends LitElement {
 			<a href=${this.href} tabindex="${this.activeFocusable ? 0 : -1}">
 				<figure>
 					<picture>
-						<img src=${this.imageSrc} alt="" style="width:auto;">
-
+						<img src=${this.imageSrc} alt="">
 					</picture>
 					<figcaption>
 						${this.text}
