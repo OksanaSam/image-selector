@@ -29,7 +29,14 @@ class CarouselSlide extends LitElement {
 				position: absolute;
 				width: 100%;
 			}
-			div {
+			button > div {
+				visibility: hidden;
+			}
+			button:hover > div,
+			button:focus > div {
+				visibility: visible;
+			}
+			.d2l-carousel-slide-slot-container {
 				line-height: 0;
 			}
 		`;
@@ -44,11 +51,13 @@ class CarouselSlide extends LitElement {
 	render() {
 		return html`
 			<button
-				aria-roledescription="slide"
+				aria-roledescription="Slide"
 				tabindex="${this.activeFocusable ? 0 : -1}">
-				${this.actionText}
+				<div>
+					${this.actionText}
+				</div>
 			</button>
-			<div>
+			<div class="d2l-carousel-slide-slot-container">
 				<slot></slot>
 			</div>
 		`;
