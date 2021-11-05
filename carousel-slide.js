@@ -29,6 +29,9 @@ class CarouselSlide extends LitElement {
 				position: absolute;
 				width: 100%;
 			}
+			div {
+				line-height: 0;
+			}
 		`;
 	}
 
@@ -39,11 +42,16 @@ class CarouselSlide extends LitElement {
 	}
 
 	render() {
-		return html`<button
+		return html`
+			<button
 				aria-roledescription="slide"
 				tabindex="${this.activeFocusable ? 0 : -1}">
 				${this.actionText}
-			</button><slot></slot>`;
+			</button>
+			<div>
+				<slot></slot>
+			</div>
+		`;
 	}
 
 	focus() {
