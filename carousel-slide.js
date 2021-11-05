@@ -4,7 +4,7 @@ class CarouselSlide extends LitElement {
 
 	static get properties() {
 		return {
-			actionText: { type: String },
+			actionText: { type: String, attribute: 'action-text' },
 			activeFocusable: { type: Boolean, reflect: true, attribute: 'active-focusable' }
 		};
 	}
