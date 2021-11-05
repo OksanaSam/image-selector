@@ -11,12 +11,12 @@ const keyCodes = Object.freeze({
 	DOWN: 40
 });
 
-class ScrollerCarousel extends LitElement {
+class Carousel extends LitElement {
 
 	static get properties() {
 		return {
 			columnGap: { type: String, attribute: 'column-gap' },
-			columnWidth: { type: String, attribute: 'column-width' }
+			label: { type: String }
 		};
 	}
 
@@ -54,11 +54,13 @@ class ScrollerCarousel extends LitElement {
 	render() {
 		const styles = {};
 		if (this.columnGap) styles['grid-gap'] = this.columnGap;
-		if (this.columnWidth) styles['grid-auto-columns'] = this.columnWidth;
 		return html`
 			<div
+				aria-label="${this.label}"
+				aria-roledescription="Carousel"
 				class="d2l-scroller-carousel-container"
 				@keydown="${this._handleKeyDown}"
+				role="group"
 				style="${styleMap(styles)}">
 				<slot></slot>
 			</div>
@@ -67,7 +69,7 @@ class ScrollerCarousel extends LitElement {
 
 	_getItems() {
 		return this.shadowRoot.querySelector('slot').assignedNodes({ flatten: true })
-			.filter(node => (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'D2L-SCROLLER-CAROUSEL-ITEM'));
+			.filter(node => (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'D2L-CAROUSEL-SLIDE'));
 	}
 
 	async _handleKeyDown(e) {
@@ -104,10 +106,9 @@ class ScrollerCarousel extends LitElement {
 		await items[newIndex].updateComplete;
 		requestAnimationFrame(() => {
 			items[newIndex].focus();
-			//forceFocusVisible(focusable);
 		});
 
 	}
 
 }
-customElements.define('d2l-scroller-carousel', ScrollerCarousel);
+customElements.define('d2l-carousel', Carousel);
