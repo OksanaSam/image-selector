@@ -2,62 +2,52 @@
 <html lang="en">
 	<head>
 		<link rel="stylesheet" href="/node_modules/@brightspace-ui/core/components/demo/styles.css" type="text/css">
+		<link rel="stylesheet" href="styles.css" type="text/css">
 		<script type="module">
+			import '@brightspace-ui/core/components/typography/typography.js';
 			import '@brightspace-ui/core/components/demo/demo-page.js';
-			import '../carousel.js';
-			import '../carousel-slide.js';
+			import '../image-selector.js';
+			import '../image-selector-image.js';
 		</script>
-		<title>ScrollerCarousel</title>
+		<title>Image Selector</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8">
-		<style>
-			img {
-				border-radius: 6px;
-				width: 180px;
-			}
-		</style>
 	</head>
-	<body>
-		<d2l-demo-page page-title="ScrollerCarousel">
-			<h2>ScrollerCarousel</h2>
+	<body class="d2l-typography">
 
-			<d2l-demo-snippet overflow-hidden>
-				<d2l-carousel label="Image Selector" column-gap="20px">
-					<d2l-carousel-slide action-text="Use this image">
-						<img src="https://s.brightspace.com/course-images/images/c8e4390b-d96b-40cd-8ffc-a00c1a24f2f4/tile-high-density-min-size.jpg" alt="fancy image">
-					</d2l-carousel-slide>
-					<d2l-carousel-slide action-text="Use this image">
-						<img src="https://s.brightspace.com/course-images/images/ba89d54e-6394-4196-8e77-7d398412de02/tile-high-density-min-size.jpg" alt="fancy image">
-					</d2l-carousel-slide>
-					<d2l-carousel-slide action-text="Use this image">
-						<img src="https://s.brightspace.com/course-images/images/06cb0e9f-89d5-4eac-8cb4-12c699ca1404/tile-high-density-min-size.jpg" alt="fancy image">
-					</d2l-carousel-slide>
-					<d2l-carousel-slide action-text="Use this image">
-						<img src="https://s.brightspace.com/course-images/images/bcda0061-5ba1-4edd-8006-e0eb2f9427d4/tile-high-density-min-size.jpg" alt="fancy image">
-					</d2l-carousel-slide>
-					<d2l-carousel-slide action-text="Use this image">
-						<img src="https://s.brightspace.com/course-images/images/b53fc2ae-0de4-41da-85ff-875372daeacc/tile-high-density-min-size.jpg" alt="fancy image">
-					</d2l-carousel-slide>
-					<d2l-carousel-slide action-text="Use this image">
-						<img src="https://s.brightspace.com/course-images/images/c28e2e2b-7ab3-4927-8895-f830f0fd2681/tile-high-density-min-size.jpg" alt="fancy image">
-					</d2l-carousel-slide>
-					<d2l-carousel-slide action-text="Use this image">
-						<img src="https://s.brightspace.com/course-images/images/d67cfe68-229d-4d07-8a90-22c12dd39e25/tile-high-density-min-size.jpg" alt="fancy image">
-					</d2l-carousel-slide>
-					<d2l-carousel-slide action-text="Use this image">
-						<img src="https://s.brightspace.com/course-images/images/e4fbb461-4cd9-4512-8304-44f2c2b741f1/tile-high-density-min-size.jpg" alt="fancy image">
-					</d2l-carousel-slide>
-					<d2l-carousel-slide action-text="Use this image">
-						<img src="https://s.brightspace.com/course-images/images/51fbf3cc-2149-4d88-890c-46efaca3ef8c/tile-high-density-min-size.jpg" alt="fancy image">
-					</d2l-carousel-slide>
-					<d2l-carousel-slide action-text="Use this image">
-						<img src="https://s.brightspace.com/course-images/images/1e7bb8b5-cc4c-4951-88ce-03c9af49768d/tile-high-density-min-size.jpg" alt="fancy image">
-					</d2l-carousel-slide>
-					<d2l-carousel-slide action-text="Use this image">
-						<img src="https://s.brightspace.com/course-images/images/d130556c-04a0-4f1f-8ffc-eea4bb7c3f0f/tile-high-density-min-size.jpg" alt="fancy image">
-					</d2l-carousel-slide>
-				</d2l-carousel>
-			</d2l-demo-snippet>
-		</d2l-demo-page>
+		<h1 class="d2l-heading-1">Image Selector</h1>
+
+		<h2 class="d2l-heading-3">No Wrap</h2>
+
+		<d2l-image-selector label="Activity Image" column-gap="20px">
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/c8e4390b-d96b-40cd-8ffc-a00c1a24f2f4/tile-high-density-min-size.jpg" image-description="A strange tunnel."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/ba89d54e-6394-4196-8e77-7d398412de02/tile-high-density-min-size.jpg" image-description="A bridge lit up with lights in the evening."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/06cb0e9f-89d5-4eac-8cb4-12c699ca1404/tile-high-density-min-size.jpg" image-description="A warehouse."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/bcda0061-5ba1-4edd-8006-e0eb2f9427d4/tile-high-density-min-size.jpg" image-description="A bay with forested mountains on either side, and a road following the coastline."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/b53fc2ae-0de4-41da-85ff-875372daeacc/tile-high-density-min-size.jpg" image-description="A ferris wheel with different colored pods and a star in the middle."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/c28e2e2b-7ab3-4927-8895-f830f0fd2681/tile-high-density-min-size.jpg" image-description="Looking up at an old iron and concrete bridge."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/d67cfe68-229d-4d07-8a90-22c12dd39e25/tile-high-density-min-size.jpg" image-description="A brief case full of money, and bills scattered around."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/e4fbb461-4cd9-4512-8304-44f2c2b741f1/tile-high-density-min-size.jpg" image-description="A picturesque landscape of green hills, with several hot air balloons floating in the distance."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/51fbf3cc-2149-4d88-890c-46efaca3ef8c/tile-high-density-min-size.jpg" image-description="A glass rooftop sunshade."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/1e7bb8b5-cc4c-4951-88ce-03c9af49768d/tile-high-density-min-size.jpg" image-description="Several pillars lined up supporting a building."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/d130556c-04a0-4f1f-8ffc-eea4bb7c3f0f/tile-high-density-min-size.jpg" image-description="Looking up at a bridge support."></d2l-image-selector-image>
+		</d2l-image-selector>
+
+		<h2 class="d2l-heading-3">Wrap</h2>
+
+		<d2l-image-selector label="Image Selector" column-gap="20px" wrap>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/c8e4390b-d96b-40cd-8ffc-a00c1a24f2f4/tile-high-density-min-size.jpg" image-description="A strange tunnel."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/ba89d54e-6394-4196-8e77-7d398412de02/tile-high-density-min-size.jpg" image-description="A bridge lit up with lights in the evening."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/06cb0e9f-89d5-4eac-8cb4-12c699ca1404/tile-high-density-min-size.jpg" image-description="A warehouse."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/bcda0061-5ba1-4edd-8006-e0eb2f9427d4/tile-high-density-min-size.jpg" image-description="A bay with forested mountains on either side, and a road following the coastline."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/b53fc2ae-0de4-41da-85ff-875372daeacc/tile-high-density-min-size.jpg" image-description="A ferris wheel with different colored pods and a star in the middle."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/c28e2e2b-7ab3-4927-8895-f830f0fd2681/tile-high-density-min-size.jpg" image-description="Looking up at an old iron and concrete bridge."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/d67cfe68-229d-4d07-8a90-22c12dd39e25/tile-high-density-min-size.jpg" image-description="A brief case full of money, and bills scattered around."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/e4fbb461-4cd9-4512-8304-44f2c2b741f1/tile-high-density-min-size.jpg" image-description="A picturesque landscape of green hills, with several hot air balloons floating in the distance."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/51fbf3cc-2149-4d88-890c-46efaca3ef8c/tile-high-density-min-size.jpg" image-description="A glass rooftop sunshade."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/1e7bb8b5-cc4c-4951-88ce-03c9af49768d/tile-high-density-min-size.jpg" image-description="Several pillars lined up supporting a building."></d2l-image-selector-image>
+			<d2l-image-selector-image action-text="Use this image" image-src="https://s.brightspace.com/course-images/images/d130556c-04a0-4f1f-8ffc-eea4bb7c3f0f/tile-high-density-min-size.jpg" image-description="Looking up at a bridge support."></d2l-image-selector-image>
+		</d2l-image-selector>
+
 	</body>
 </html>

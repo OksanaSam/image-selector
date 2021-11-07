@@ -1,4 +1,5 @@
 import { css, html, LitElement } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map.js';
 import { styleMap } from 'lit-html/directives/style-map.js';
 
 const keyCodes = Object.freeze({
@@ -11,12 +12,13 @@ const keyCodes = Object.freeze({
 	DOWN: 40
 });
 
-class Carousel extends LitElement {
+class ImageSelector extends LitElement {
 
 	static get properties() {
 		return {
 			columnGap: { type: String, attribute: 'column-gap' },
-			label: { type: String }
+			label: { type: String },
+			wrap: { type: Boolean, reflect: true }
 		};
 	}
 
@@ -28,20 +30,33 @@ class Carousel extends LitElement {
 			:host([hidden]) {
 				display: none;
 			}
-			.d2l-scroller-carousel-container {
+			.d2l-image-selector-container {
 				display: grid;
-				grid-auto-flow: column;
 				overflow: hidden;
+			}
+			.d2l-image-selector-container-nowrap {
+				grid-auto-columns: 250px;
+				grid-auto-flow: column;
 				overflow-x: auto;
 				overscroll-behavior-x: contain;
+				scroll-padding: 40px;
 				scroll-snap-type: x proximity;
 			}
+			.d2l-image-selector-container-wrap {
+				grid-auto-flow: row;
+				grid-template-columns: repeat(auto-fill, 250px);
+			}
 			@media (prefers-reduced-motion: no-preference) {
-				.d2l-scroller-carousel-container {
+				.d2l-image-selector-container {
 					scroll-behavior: smooth;
 				}
 			}
 		`;
+	}
+
+	constructor() {
+		super();
+		this.wrap = false;
 	}
 
 	firstUpdated() {
@@ -52,13 +67,17 @@ class Carousel extends LitElement {
 	}
 
 	render() {
+		const classes = {
+			'd2l-image-selector-container': true,
+		};
+		classes[this.wrap ? 'd2l-image-selector-container-wrap' : 'd2l-image-selector-container-nowrap'] = true;
 		const styles = {};
 		if (this.columnGap) styles['grid-gap'] = this.columnGap;
 		return html`
 			<div
 				aria-label="${this.label}"
-				aria-roledescription="Carousel"
-				class="d2l-scroller-carousel-container"
+				aria-roledescription="Image Selector. Use the left and right arrow keys to navigate the images."
+				class="${classMap(classes)}"
 				@keydown="${this._handleKeyDown}"
 				role="group"
 				style="${styleMap(styles)}">
@@ -69,7 +88,7 @@ class Carousel extends LitElement {
 
 	_getItems() {
 		return this.shadowRoot.querySelector('slot').assignedNodes({ flatten: true })
-			.filter(node => (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'D2L-CAROUSEL-SLIDE'));
+			.filter(node => (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'D2L-IMAGE-SELECTOR-IMAGE'));
 	}
 
 	async _handleKeyDown(e) {
@@ -111,4 +130,4 @@ class Carousel extends LitElement {
 	}
 
 }
-customElements.define('d2l-carousel', Carousel);
+customElements.define('d2l-image-selector', ImageSelector);
