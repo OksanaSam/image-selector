@@ -10,7 +10,6 @@ class ImageSelectorImage extends LitElement {
 
 	static get properties() {
 		return {
-			actionText: { type: String, attribute: 'action-text' },
 			activeFocusable: { type: Boolean, reflect: true, attribute: 'active-focusable' },
 			imageSrc: { type: String, attribute: 'image-src' },
 			imageDescription: { type: String, attribute: 'image-description' }
@@ -83,7 +82,6 @@ class ImageSelectorImage extends LitElement {
 	constructor() {
 		super();
 		this.activeFocusable = false;
-		this.actionText = 'Use this item';
 	}
 
 	connectedCallback() {
@@ -103,9 +101,7 @@ class ImageSelectorImage extends LitElement {
 				<img src="${this.imageSrc}" aria-hidden="true" loading="lazy">
 				<span class="${classMap(descriptionClasses)}">${this.imageDescription}</span>
 				<div class="d2l-image-selector-image-text-container">
-					<div class="d2l-image-selector-image-text d2l-label-text">
-						${this.actionText}
-					</div>
+					<div class="d2l-image-selector-image-text d2l-label-text">Use this image</div>
 				</div>
 			</button>
 		`;

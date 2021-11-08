@@ -1,7 +1,7 @@
 {
-  "name": "scroller-carousel",
+  "name": "image-selector",
   "description": "",
-  "repository": "https://github.com/dbatiste/scroller-carousel.git",
+  "repository": "https://github.com/dbatiste/image-selector.git",
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:lit && npm run lint:style",
     "lint:eslint": "eslint . --ext .js,.html",
@@ -30,8 +30,8 @@
     "stylelint": "^13"
   },
   "files": [
-    "scroller-carousel.js",
-    "scroller-carousel-item.js"
+    "image-selector.js",
+    "image-selector-image.js"
   ],
   "publishConfig": {
     "access": "public"

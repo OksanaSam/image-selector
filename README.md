@@ -1,4 +1,14 @@
-# scroller-carousel
+# image-selector
+
+## Highlights
+
+* use of aria for role and interaction
+* grid layout with scroll snap
+* responsive layout
+* roving tab index
+* reduced motion
+* reduced data
+* rtl
 
 ## Instructions
 
