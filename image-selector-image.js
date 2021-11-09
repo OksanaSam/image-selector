@@ -4,13 +4,10 @@ import { classMap } from 'lit-html/directives/class-map.js';
 import { labelStyles } from '@brightspace-ui/core/components/typography/styles.js';
 import { offscreenStyles } from '@brightspace-ui/core/components/offscreen/offscreen.js';
 
-const reduceData = matchMedia('(prefers-reduced-data: reduce)');
-
 class ImageSelectorImage extends LitElement {
 
 	static get properties() {
 		return {
-			activeFocusable: { type: Boolean, reflect: true, attribute: 'active-focusable' },
 			imageSrc: { type: String, attribute: 'image-src' },
 			imageDescription: { type: String, attribute: 'image-description' }
 		};
@@ -23,7 +20,6 @@ class ImageSelectorImage extends LitElement {
 				display: block;
 				line-height: 0;
 				overflow: hidden;
-				scroll-snap-align: start;
 			}
 			:host([hidden]) {
 				display: none;
@@ -66,50 +62,23 @@ class ImageSelectorImage extends LitElement {
 				border-radius: 6px;
 				width: 100%;
 			}
-			@media (prefers-reduced-motion: no-preference) {
-				.d2l-image-selector-image-text-container {
-					transition: opacity 200ms linear, margin 200ms linear;
-				}
-			}
-			@media (prefers-reduced-data: reduce) { /* stylelint-disable-line media-feature-name-no-unknown */
-				img {
-					display: none;
-				}
-			}
 		`];
-	}
-
-	constructor() {
-		super();
-		this.activeFocusable = false;
-	}
-
-	connectedCallback() {
-		super.connectedCallback();
-		reduceData.addEventListener('change', () => this.requestUpdate());
 	}
 
 	render() {
 		const descriptionClasses = {
-			'd2l-image-selector-image-description': true
+			'd2l-image-selector-image-description': true,
+			'd2l-offscreen': true
 		};
-		if (!reduceData.matches) descriptionClasses['d2l-offscreen'] = true;
 		return html`
-			<button
-				aria-roledescription="Image Selector Button"
-				tabindex="${this.activeFocusable ? 0 : -1}">
-				<img src="${this.imageSrc}" aria-hidden="true" loading="lazy">
+			<button>
+				<img src="${this.imageSrc}">
 				<span class="${classMap(descriptionClasses)}">${this.imageDescription}</span>
 				<div class="d2l-image-selector-image-text-container">
 					<div class="d2l-image-selector-image-text d2l-label-text">Use this image</div>
 				</div>
 			</button>
 		`;
-	}
-
-	focus() {
-		const elem = this.shadowRoot.querySelector('button');
-		if (elem) elem.focus();
 	}
 
 }
