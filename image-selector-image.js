@@ -20,6 +20,7 @@ class ImageSelectorImage extends LitElement {
 				display: block;
 				line-height: 0;
 				overflow: hidden;
+				scroll-snap-align: start;
 			}
 			:host([hidden]) {
 				display: none;

@@ -16,7 +16,9 @@ class ImageSelector extends LitElement {
 
 	static get properties() {
 		return {
-			label: { type: String }
+			columnGap: { type: String, attribute: 'column-gap' },
+			label: { type: String },
+			wrap: { type: Boolean, reflect: true }
 		};
 	}
 
@@ -28,19 +30,44 @@ class ImageSelector extends LitElement {
 			:host([hidden]) {
 				display: none;
 			}
+			.d2l-image-selector-container {
+				display: grid;
+				overflow: hidden;
+			}
+			.d2l-image-selector-container-nowrap {
+				grid-auto-columns: 250px;
+				grid-auto-flow: column;
+				overflow-x: auto;
+				overscroll-behavior-x: contain;
+				scroll-padding: 40px;
+				scroll-snap-type: x proximity;
+			}
+			.d2l-image-selector-container-wrap {
+				grid-auto-flow: row;
+				grid-template-columns: repeat(auto-fill, 250px);
+			}
 		`;
+	}
+
+	constructor() {
+		super();
+		this.wrap = false;
 	}
 
 	render() {
 		const classes = {
 			'd2l-image-selector-container': true,
 		};
+		classes[this.wrap ? 'd2l-image-selector-container-wrap' : 'd2l-image-selector-container-nowrap'] = true;
+		const styles = {};
+		if (this.columnGap) styles['grid-gap'] = this.columnGap;
 		return html`
 			<div
 				aria-label="${this.label}"
 				aria-roledescription="Image Selector."
 				class="${classMap(classes)}"
-				role="group">
+				role="group"
+				style="${styleMap(styles)}">
 				<slot></slot>
 			</div>
 		`;
