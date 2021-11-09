@@ -64,6 +64,11 @@ class ImageSelectorImage extends LitElement {
 				border-radius: 6px;
 				width: 100%;
 			}
+			@media (prefers-reduced-motion: no-preference) {
+				.d2l-image-selector-image-text-container {
+					transition: opacity 200ms linear, margin 200ms linear;
+				}
+			}
 		`];
 	}
 
