@@ -8,6 +8,7 @@ class ImageSelectorImage extends LitElement {
 
 	static get properties() {
 		return {
+			activeFocusable: { type: Boolean, reflect: true, attribute: 'active-focusable' },
 			imageSrc: { type: String, attribute: 'image-src' },
 			imageDescription: { type: String, attribute: 'image-description' }
 		};
@@ -66,6 +67,11 @@ class ImageSelectorImage extends LitElement {
 		`];
 	}
 
+	constructor() {
+		super();
+		this.activeFocusable = false;
+	}
+
 	render() {
 		const descriptionClasses = {
 			'd2l-image-selector-image-description': true,
@@ -73,7 +79,8 @@ class ImageSelectorImage extends LitElement {
 		};
 		return html`
 			<button
-				aria-roledescription="Image Selector Button">
+				aria-roledescription="Image Selector Button"
+				tabindex="${this.activeFocusable ? 0 : -1}">
 				<img src="${this.imageSrc}" aria-hidden="true">
 				<span class="${classMap(descriptionClasses)}">${this.imageDescription}</span>
 				<div class="d2l-image-selector-image-text-container">
@@ -81,6 +88,11 @@ class ImageSelectorImage extends LitElement {
 				</div>
 			</button>
 		`;
+	}
+
+	focus() {
+		const elem = this.shadowRoot.querySelector('button');
+		if (elem) elem.focus();
 	}
 
 }
