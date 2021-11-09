@@ -71,8 +71,9 @@ class ImageSelectorImage extends LitElement {
 			'd2l-offscreen': true
 		};
 		return html`
-			<button>
-				<img src="${this.imageSrc}">
+			<button
+				aria-roledescription="Image Selector Button">
+				<img src="${this.imageSrc}" aria-hidden="true">
 				<span class="${classMap(descriptionClasses)}">${this.imageDescription}</span>
 				<div class="d2l-image-selector-image-text-container">
 					<div class="d2l-image-selector-image-text d2l-label-text">Use this image</div>

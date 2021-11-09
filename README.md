@@ -1,47 +1,70 @@
 # image-selector
 
-## Highlights
-
-* Usage of Aria
-* Fluid Layout
-* Custom keyboard navigation
-* Reduced motion
-* Reduced data
-
 ## Instructions
 
-1. Update `d2l-image-selector` to define a `label` property that will be used to label the selector.
+1. Update `d2l-image-selector` to define two knew properties. The `columnGap` property will be used to control the spacing between items in the grid. The `wrap` property will control whether the items in the grid scroll horizontally or wrap to scroll vertically.
 ```javascript
 static get properties() {
 	return {
-		label: { type: String }
+		...
+		columnGap: { type: String, attribute: 'column-gap' },
+		wrap: { type: Boolean, reflect: true }
 	};
 }
 ```
-2. Update `d2l-image-selector` to specify the `role`, `aria-label`, and `aria-roledescription` attributes. These will provide necessary context and semantics as the user navigates the child items.
+```javascript
+constructor() {
+	super();
+	this.wrap = false;
+}
+```
+2. Update `d2l-image-selector`'s `render` method to conditionally render a class for wrapping vs no-wrapping. Also, conditionally render the `grid-gap` style property if a `columnGap` has been provided by the consumer.
 ```javascript
 render() {
-	...
+	const classes = { 'd2l-image-selector-container': true };
+	classes[this.wrap ? 'd2l-image-selector-container-wrap' : 'd2l-image-selector-container-nowrap'] = true;
+
+	const styles = {};
+	if (this.columnGap) styles['grid-gap'] = this.columnGap;
+
 	return html`
 		<div
-			aria-label="${this.label}"
-			aria-roledescription="Image Selector."
-			role="group">
+			...
+			class="${classMap(classes)}"
+			style="${styleMap(styles)}">
 				<slot></slot>
 		</div>
 	`;
 }
 ```
-3. Update `d2l-image-selector-image` to specify the `aria-roledescription` attribute to provide a better description for screen reader users.  In addition, add the `aria-hidden="true"` attribute to the `img` element since the description will be rendered offscreen.
-```javascript
-render() {
-	return html`
-		<button
-			aria-roledescription="Image Selector Button">
-			<img src="${this.imageSrc}" aria-hidden="true">
-			...
-		</button>
-	`;
+3. Update `d2l-image-selector`'s styles block to specify the `grid` layout for the wrapping and no-wrapping cases.
+```css
+.d2l-image-selector-container {
+	display: grid;
+	overflow: hidden;
+}
+.d2l-image-selector-container-nowrap {
+	grid-auto-columns: 250px;
+	grid-auto-flow: column;
+	overflow-x: auto;
+}
+.d2l-image-selector-container-wrap {
+	grid-auto-flow: row;
+	grid-template-columns: repeat(auto-fill, 250px);
+}
+```
+4. For some fancy scrolling, update `d2l-image-selector` to specify `scroll-padding` and `scroll-snap-type` for the no-wrapping case. Also update `d2l-image-selector-image` to specify the `scroll-snap-align` property which controls the scroll-snap alignment.
+```css
+.d2l-image-selector-container-nowrap {
+	...
+	scroll-padding: 40px;
+	scroll-snap-type: x proximity;
+}
+```
+```css
+:host {
+	...
+	scroll-snap-align: start;
 }
 ```
 

@@ -14,6 +14,12 @@ const keyCodes = Object.freeze({
 
 class ImageSelector extends LitElement {
 
+	static get properties() {
+		return {
+			label: { type: String }
+		};
+	}
+
 	static get styles() {
 		return css`
 			:host {
@@ -27,10 +33,14 @@ class ImageSelector extends LitElement {
 
 	render() {
 		const classes = {
-			'd2l-image-selector-container': true
+			'd2l-image-selector-container': true,
 		};
 		return html`
-			<div class="${classMap(classes)}">
+			<div
+				aria-label="${this.label}"
+				aria-roledescription="Image Selector."
+				class="${classMap(classes)}"
+				role="group">
 				<slot></slot>
 			</div>
 		`;
