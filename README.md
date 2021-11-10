@@ -42,8 +42,8 @@ render() {
 ```
 4. Optionally respond to changes in the user's `prefers-reduced-data` OS preference. If this is not done, you must refresh the page after toggling the emulation setting in order for the conditional rendering to be applied.
 ```javascript
-connectedCallback() {
-	super.connectedCallback();
+firstUpdated(changedProperties) {
+	super.firstUpdated(changedProperties);
 	reduceData.addEventListener('change', () => this.requestUpdate());
 }
 ```
