@@ -53,7 +53,17 @@ render() {
 	grid-template-columns: repeat(auto-fill, 250px);
 }
 ```
-4. For some fancy scrolling, update `d2l-image-selector` to specify `scroll-padding` and `scroll-snap-type` for the no-wrapping case. Also update `d2l-image-selector-image` to specify the `scroll-snap-align` property which controls the scroll-snap alignment.
+4. Update the `index.html` page to specify the `column-grap` and `wrap` properties for the two examples.
+```html
+<d2l-image-selector label="Activity Image" column-gap="20px">
+	...
+</d2l-image-selector>
+
+<d2l-image-selector label="Activity Selector" column-gap="20px" wrap>
+	...
+</d2l-image-selector>
+```
+5. For some fancy scrolling, update `d2l-image-selector` to specify `scroll-padding` and `scroll-snap-type` for the no-wrapping case. Also update `d2l-image-selector-image` to specify the `scroll-snap-align` property which controls the scroll-snap alignment.
 ```css
 .d2l-image-selector-container-nowrap {
 	...
