@@ -2,17 +2,11 @@
 
 ## Highlights
 
-* use of aria for role and interaction
-* grid layout with scroll snap
-* responsive layout
-* roving tab index
-* reduced motion
-* reduced data
-* rtl
-
-## Instructions
-
-
+* Usage of Aria
+* Fluid layout
+* Custom keyboard interaction
+* Reduced motion
+* Reduced data
 
 ## Developing, Testing and Contributing
 
