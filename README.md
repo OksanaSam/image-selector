@@ -48,7 +48,7 @@ render() {
 ```html
 <d2l-image-selector label="Activity Image">
 	...
-<d2l-image-selector>
+</d2l-image-selector>
 ```
 
 ## Developing, Testing and Contributing
