@@ -36,3 +36,9 @@ render() {
 	`;
 }
 ```
+4. Update `index.html` to specify a label for the `d2l-image-selector`s.
+```html
+<d2l-image-selector label="Activity Image">
+	...
+<d2l-image-selector>
+```
